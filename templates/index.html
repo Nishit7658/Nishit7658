@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian SMS Spam Detector</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; width: 300px; margin: 10px; }
+        h1 { color: #444; }
+    </style>
+</head>
+<body>
+    <h1>SMS Spam Detection (India)</h1>
+    <form method="post">
+        <input type="text" name="message" placeholder="Enter your message" required>
+        <br>
+        <button type="submit">Check Message</button>
+    </form>
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
