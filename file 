@@ -1,0 +1,44 @@
+import random
+import pandas as pd
+
+# Sample spam message templates
+spam_templates = [
+    "Congratulations! You've won a ${amount} {store} gift card. Click here to claim: {link}",
+    "URGENT! Your account has been suspended. Verify now at {phishing_link}",
+    "You have been selected for a FREE {item}. Claim it now before it expires!",
+    "Earn ${amount} a week from home. No experience needed. Apply now!",
+    "Your mobile number has won £{amount} in the {lottery} Lottery. Send your details to claim.",
+    "We noticed unusual activity on your {service} account. Click here to secure it.",
+    "This is not a joke! You are the lucky winner of our ${amount} sweepstakes!",
+    "Get rich quick! Join our investment scheme and double your money in a week.",
+    "Act Now! Your {store} package is on hold. Update your address here: {link}",
+    "You owe IRS money. Pay immediately or face legal action. Call now!",
+]
+
+# Random data for formatting
+stores = ["Walmart", "Amazon", "BestBuy", "Flipkart"]
+items = ["iPhone", "Samsung Galaxy", "PlayStation 5", "Laptop"]
+lotteries = ["UK", "Euro", "Mega Millions"]
+services = ["PayPal", "Bank of America", "Google", "Facebook"]
+amounts = [100, 500, 1000, 5000, 10000]
+links = ["bit.ly/abc123", "tinyurl.com/winbig", "short.link/claim-now", "fake.link/gift"]
+phishing_links = ["secure-login.net", "verify-now.org", "account-recovery.com"]
+
+# Generate 100 spam messages
+def generate_spam_message():
+    template = random.choice(spam_templates)
+    return template.format(
+        amount=random.choice(amounts),
+        store=random.choice(stores),
+        item=random.choice(items),
+        lottery=random.choice(lotteries),
+        service=random.choice(services),
+        link=random.choice(links),
+        phishing_link=random.choice(phishing_links),
+    )
+
+spam_messages = [{"Label": "spam", "Message": generate_spam_message()} for _ in range(100)]
+
+# Convert to DataFrame
+df_spam = pd.DataFrame(spam_messages)
+df_spam.head()
